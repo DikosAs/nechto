@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class DataCenterConfig(AppConfig):
+class FrontendConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'BackEnd'
+    name = 'FrontEnd'

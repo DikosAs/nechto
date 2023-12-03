@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Вход{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'reg-login.css' %}">
+{% endblock %}
+
+{% block content%}
+<div class="reg-box">
+    <form method="post">
+        {% csrf_token %}
+        <div class="text-field">
+            <label class="text-field__label" for="account-name">Логин:</label>
+            <input class="text-field__input" type="text" name="account-name">
+        </div>
+        <div class="text-field">
+            <label class="text-field__label" for="password">Пароль:</label>
+            <input class="text-field__input" type="password" name="password">
+        </div>
+        <button type="submit" class="form-btn">Вход</button>
+    </form>
+</div>
+{% endblock %}
