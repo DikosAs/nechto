@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Игры{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'game-list.css' %}">
+{% endblock %}
+{% block content %}
+<div class="all-servers">
+    {% for game in games %}
+    <a href="{{ game }}/game.html">
+        <div class="server">
+            <div id="status"><div class="status"></div></div>
+            <div class="name"><p>{{ game }}</p></div>        
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

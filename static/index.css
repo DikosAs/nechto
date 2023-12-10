@@ -30,3 +30,12 @@ div.nav-link {
     width: 100px;
     height: 50px;
 }
+
+div.nav-link#play {
+    margin-right: auto;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}

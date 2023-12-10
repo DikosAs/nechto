@@ -12,24 +12,29 @@
 </head>
 <body>
     <div class="nav-panel">
+        {% if user.login == True %}
         <div class="nav-link" id="account">
-            <p> adsa {{ acount.name }}</p>
+            <p>{{ user.name }}</p>
         </div>
-        {% if user_is_login == True %}
         <div class="nav-link" id="logout">
             <p>
-                <a class="nav-link" href="{% url 'logout' %}"></a>
+                <a class="nav-link" href="{% url 'logout' %}">Выход</a>
             </p>
         </div>
         {% else %}
         <div class="nav-link" id="register" style="width: 150px;">
             <p>
                 <a class="nav-link" href="{% url 'reg' %}">Регистрация</a>
-                |
+                <a class="nav-link" href="#">|</a>
                 <a class="nav-link" href="{% url 'login' %}">Вход</a>
             </p>
         </div>
         {% endif %}
+        <div class="nav-link" id="play">
+            <p>
+                <a class="nav-link" href="{% url 'play' %}">Играть</a>
+            </p>
+        </div>
     </div>
     {% block content %}
     

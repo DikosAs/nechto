@@ -1,0 +1,38 @@
+.all-servers {
+    margin-top: 10px;
+}
+
+.server {
+    border-radius: 7.5px;
+    background-color: rgba(1, 1, 1, 0.227);
+
+    margin: auto;
+    width: 500px;
+    height: 30px;
+    font-size: 20px;
+
+    display: flex;
+}
+
+.status {
+    background-color: rgb(10, 188, 27);
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+
+    padding: auto;
+}
+
+#status {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+}
+
+.name>p {
+    margin: 0px;
+}
+
+.name {
+    margin: auto;
+}
