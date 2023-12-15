@@ -1,38 +1,49 @@
-.all-servers {
-    margin-top: 10px;
+:root {
+    --servers-width: 500px;
+    --free-column-width: 33.333333333333333%;
+    --servers-bg: rgba(1, 1, 1, 0.227);
+}
+
+.all__servers {
+    margin: auto;
+    width: var(--servers-width);
 }
 
 .server {
-    border-radius: 7.5px;
-    background-color: rgba(1, 1, 1, 0.227);
-
-    margin: auto;
-    width: 500px;
-    height: 30px;
-    font-size: 20px;
-
+    margin-top: 10px;
     display: flex;
+    border-radius: 5px;
+    background-color: var(--servers-bg);
 }
 
-.status {
-    background-color: rgb(10, 188, 27);
+.server>.status,
+.server>.id,
+.server>.max__players {
+    width: var(--free-column-width);
+    vertical-align: middle;
+    padding: 2px;
+}
+
+.status>div {
     width: 15px;
     height: 15px;
-    border-radius: 100%;
-
-    padding: auto;
-}
-
-#status {
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: 10px;
-}
-
-.name>p {
-    margin: 0px;
-}
-
-.name {
+    border-radius: 50%;
+    background-color: rgb(38, 216, 22);
     margin: auto;
+}
+
+.server__manual {
+    margin: auto;
+    background-color: var(--servers-bg);
+    display: flex;
+    width: var(--servers-width);
+    height: 25px;
+}
+
+.server__manual>.status,
+.server__manual>.server__number,
+.server__manual>.players__online {
+    width: var(--free-column-width);
+    vertical-align: middle;
+    padding: 2px;
 }

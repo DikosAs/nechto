@@ -7,5 +7,5 @@ urlpatterns = [
     # path('get-user-cards', user_cards),
     path('get-all-cards-data', cards_data),
     path('add-player-id-game', add_player_id_game),
-    path('exit', exit_of_game, name='exit'),
+    path('exit', exit_of_game),
 ]

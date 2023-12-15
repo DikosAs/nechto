@@ -5,6 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.handlers.wsgi import WSGIRequest
 from django.urls import reverse_lazy, reverse
 from .models import Game
+from PlayFront.models import Player
 
 def user_data(req: WSGIRequest) -> dict:
     if req.user.is_authenticated:
@@ -16,7 +17,13 @@ def user_data(req: WSGIRequest) -> dict:
 @login_required(login_url=reverse_lazy('login'))
 def games(request: WSGIRequest):
     if request.build_absolute_uri()[-5:-1] == 'play':
-        games_list = [game.number for game in list(Game.objects.all())]
+        games_list = []
+        for game in list(Game.objects.all()):
+            games_list.append({
+                'id': game.id,
+                'players': len(Player.objects.filter(gameID=game.id)),
+                'maxPlayers': game.maxPlayers
+            })
         return render(request, 'game/games-list.html', {'user': user_data(request), 'games': games_list})
     else:
         return redirect(reverse("play"))
@@ -40,7 +47,6 @@ def reg_(request: WSGIRequest):
         login(request, user)
         return redirect(reverse('play'))
 
-
 def login_(request: WSGIRequest):
     if request.method == 'GET':
         if request.user.is_authenticated:
@@ -48,7 +54,6 @@ def login_(request: WSGIRequest):
         else:
             return render(request, 'accout/login.html', {'user': user_data(request)})
     
-    print(dict(request.POST))
     username = request.POST["account-name"]
     password = request.POST["password"]
 

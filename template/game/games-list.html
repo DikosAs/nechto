@@ -6,12 +6,19 @@
 <link rel="stylesheet" href="{% static 'game-list.css' %}">
 {% endblock %}
 {% block content %}
-<div class="all-servers">
+<div class="server__manual">
+    <div class="status">Статус</div>
+    <div class="server__number">Номер</div>
+    <div class="players__online">Онлайн/Максимум</div>
+</div>
+
+<div class="all__servers">
     {% for game in games %}
-    <a href="{{ game }}/game.html">
+    <a href="{{ game.id }}/game.html">
         <div class="server">
-            <div id="status"><div class="status"></div></div>
-            <div class="name"><p>{{ game }}</p></div>        
+            <div class="status"><div></div></div>
+            <div class="id">{{ game.id }}</div>
+            <div class="max__players">{{ game.players }}/{{ game.maxPlayers }}</div>
         </div>
     </a>
     {% endfor %}

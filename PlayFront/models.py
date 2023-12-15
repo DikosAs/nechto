@@ -5,17 +5,12 @@ from FrontEnd.models import Game
 # Create your models here.
 class Player(models.Model):
     id = models.BigAutoField(primary_key=True)
+    gameID = models.ForeignKey(Game, models.CASCADE)
     username = models.CharField(max_length=50)
     position = models.SmallIntegerField()
-    game = models.SmallIntegerField()
 
     def __str__(self) -> str:
         return str(self.id)
-
-class PlayerPlay(models.Model):
-    playerID = models.ForeignKey(Player, models.CASCADE)
-    gameID = models.ForeignKey(Game, models.CASCADE)
-    status = models.BooleanField()
 
 class Card(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -45,13 +40,14 @@ class CardFunction(models.Model):
         verbose_name_plural = "Функции карт"
 
 class Coloda(models.Model):
-    id = models.BigIntegerField(primary_key=True)
+    gameID = models.ForeignKey(Game, models.CASCADE)
+    coloda = models.TextField()
 
-class PlayerCards(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    card_1 = models.ForeignKey(Card, models.CASCADE, related_name='card_1')
-    card_2 = models.ForeignKey(Card, models.CASCADE, related_name='card_2')
-    card_3 = models.ForeignKey(Card, models.CASCADE, related_name='card_3')
-    card_4 = models.ForeignKey(Card, models.CASCADE, related_name='card_4')
-    card_5 = models.ForeignKey(Card, models.CASCADE, related_name='card_5', null=True, blank=True)
-    playerID = models.ForeignKey(Player, models.CASCADE)
+# class PlayerCards(models.Model):
+#     id = models.BigAutoField(primary_key=True)
+#     card_1 = models.ForeignKey(Card, models.CASCADE, related_name='card_1')
+#     card_2 = models.ForeignKey(Card, models.CASCADE, related_name='card_2')
+#     card_3 = models.ForeignKey(Card, models.CASCADE, related_name='card_3')
+#     card_4 = models.ForeignKey(Card, models.CASCADE, related_name='card_4')
+#     card_5 = models.ForeignKey(Card, models.CASCADE, related_name='card_5', null=True, blank=True)
+#     playerID = models.ForeignKey(Player, models.CASCADE)

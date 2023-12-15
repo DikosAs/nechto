@@ -2,8 +2,12 @@ from django.db import models
 
 # Create your models here.
 class Game(models.Model):
-    number = models.CharField('Номер', primary_key=True, max_length=5)
+    id = models.BigAutoField(primary_key=True)
     password = models.CharField('Пароль', max_length=1024, null=True, blank=True)
+    maxPlayers = models.SmallIntegerField('Максимум игроков')
+
+    def __str__(self) -> str:
+        return str(self.id)
 
     class Meta():
         verbose_name = "игру"
