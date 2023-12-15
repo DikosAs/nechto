@@ -1,1 +1,1 @@
-py manage.py runserver 192.168.0.30:9999
+py manage.py runserver
