@@ -7,11 +7,13 @@ from django.urls import reverse_lazy, reverse
 from .models import Game
 from PlayFront.models import Player
 
+
 def user_data(req: WSGIRequest) -> dict:
     if req.user.is_authenticated:
         return {'name': req.user.username, 'login': True}
     else:
         return {'login': False}
+
 
 # Create your views here.
 @login_required(login_url=reverse_lazy('login'))
@@ -28,16 +30,17 @@ def games(request: WSGIRequest):
     else:
         return redirect(reverse("play"))
 
+
 def reg_(request: WSGIRequest):
     if request.method == 'GET':
         if request.user.is_authenticated:
             return redirect(reverse("play"))
         else:
-            return render(request, 'accout/register.html', {'form': UserCreationForm, 'user': user_data(request)})
-        
+            return render(request, 'account/register.html', {'form': UserCreationForm, 'user': user_data(request)})
+
     form = UserCreationForm(request.POST)
-    
-    if form.is_valid():        
+
+    if form.is_valid():
         form.save()
 
         username = request.POST["username"]
@@ -47,13 +50,14 @@ def reg_(request: WSGIRequest):
         login(request, user)
         return redirect(reverse('play'))
 
+
 def login_(request: WSGIRequest):
     if request.method == 'GET':
         if request.user.is_authenticated:
             return redirect(reverse("play"))
         else:
-            return render(request, 'accout/login.html', {'user': user_data(request)})
-    
+            return render(request, 'account/login.html', {'user': user_data(request)})
+
     username = request.POST["account-name"]
     password = request.POST["password"]
 
@@ -61,6 +65,7 @@ def login_(request: WSGIRequest):
     if user is not None:
         login(request, user)
         return redirect(reverse("play"))
+
 
 def logout_(request: WSGIRequest):
     logout(request)

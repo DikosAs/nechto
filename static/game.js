@@ -81,14 +81,9 @@ document.querySelector('div.nav-link#play').setAttribute('style', 'width: 150px;
 //     setInterval(() => {update()}, 10000)
 // }, 250)
 
-const playSocket = new WebSocket(
-    'ws://ws/'
-    // + window.location.host
-    // + '/play/'
-    // + BASE_URL.split('/')[4]
+var ws = new WebSocket(
+    'ws://'
+    + window.location.hostname
+    + '/ws/'
     + 'game.socket/'
 )
-
-playSocket.onopen = function(event) {
-    console.log('Connected to server')
-}

@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Game(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -9,6 +10,6 @@ class Game(models.Model):
     def __str__(self) -> str:
         return str(self.id)
 
-    class Meta():
+    class Meta:
         verbose_name = "игру"
         verbose_name_plural = "Игры"
